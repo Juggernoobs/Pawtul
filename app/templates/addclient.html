@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block content %}
+<link href="{{url_for('static', filename='css/add_client.css')}}" rel="stylesheet" />
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><h3>New Client Information</h3></div>
+        <div class="col-md-4"></div>
+    </div><br>
+    <div class="col-md-6"></div>
+    <div class="row">
+      <body>
+        <div class="card">
+            <div class="photo"></div>
+            <div class="banner"></div>
+            <ul>
+                <li><b>Client Name</b></li>
+                <li>Client Address</li>
+
+            </ul>
+            <button class="contact" id="main-button">Add Pet</button>
+
+          <form class="email-form">
+                <input id="name" type="text" placeholder="name">
+                <input id="email" type="text" placeholder="email">
+                <textarea id="comment" type="text" placeholder="comment"></textarea>
+                <button class="contact">send</button>
+          </form>
+          </div>
+    </body>
+    <div class="col-md-6">
+    <form action="/addclients" method="post">
+                  
+                        <div class="col-md-8">
+                             <br><br>
+                              <div class="form-group">
+                                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name">
+                              </div>
+
+                              <div class="form-group">
+                                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name">
+                              </div>
+
+                              <div class="form-group">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+                              </div>
+
+                              <div class="form-group">
+                                <input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Enter Phone Number">
+                              </div>
+                        </div>
+                         <div class="col-md-8">
+                              <div class="form-group">
+                                    <input type="text" class="form-control" id="address1" name="address1" placeholder="Enter Address 1">
+                              </div>
+
+                              <div class="form-group">
+                                <input type="text" class="form-control" id="address2" name="address2" placeholder="Enter Address 2">
+                              </div>
+
+                              <div class="form-group">
+                                <input type="text" class="form-control" id="address3" name="address3" placeholder="Enter Address 3">
+                              </div>
+
+                              <div class="form-group">
+                                 <input type="text" class="form-control" id="address4" name="address4" placeholder="Enter Address 4">
+                              </div>
+
+                              <div class="form-group">
+                                <input type="text" class="form-control" id="postcode" name="postcode" placeholder="Enter Post Code">
+                              </div>
+
+                        </div>
+                        <div class="form-group">
+                          <input type="text" hidden="true" class="form-control" id="UUID" name="UUID" placeholder="Enter UUID">
+                    </div>
+
+
+                    <div class="col-md-8">
+                  <button class="btn btn-success" style="width:100%;">Save Client</button>
+
+        </div>
+    </form>
+
+
+
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><h3>New Pet Information</h3></div>
+        <div class="col-md-3"></div>
+    </div><br>
+
+    <form action="/client_pets/{{client.id}}" method="post" enctype="multipart/form-data">
+        <div class="row">
+
+                        <div class="col-md-6">
+                              <div class="form-group">
+                                    <input type="text" class="form-control" id="UUID" name="UUID" placeholder="Enter UUID">
+                              </div>
+
+                              <div class="form-group">
+                                <input type="text" class="form-control" id="petname" name="petname" placeholder="Enter Pet Name">
+                              </div>
+
+                              <div class="form-group">
+                                <input type="text" class="form-control" id="petbreed" name="petbreed" placeholder="Enter Pet Breed">
+                              </div>
+
+                              <div class="form-group">
+                                    <input type="date" class="form-control" id="dob" name="dob">
+                              </div>
+
+                              <div class="form-group">
+                                <input type="text" class="form-control" id="microchip" name="microchip" placeholder="Enter Microchip Number">
+                              </div>
+
+
+                                <div class="form-group">
+                                    <label>Profile Picture: </label>
+                                    <input type="file" id="myFile"  name="myFile">
+                                </div>
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                        <div class="col-md-6">
+                            <div>
+                                <div class="form-check-inline">
+                                    <input type="radio" class="form-check-input" id="male" name="gender" value="Male">
+                                </div>
+                                Male
+
+                                <div class="form-check-inline">
+                                    <input type="radio" class="form-check-input" id="female" name="gender" value="Female">
+                                </div>
+                                Female
+                            </div><br>
+
+                            <div>
+                                <div class="form-check-inline">
+                                    <input type="radio" class="form-check-input" id="flee" name="gendertype" value="flee">
+                                </div>
+                                Flee
+
+                                <div class="form-check-inline">
+                                    <input type="radio" class="form-check-input" id="wormed" name="gendertype" value="wormed">
+                                </div>
+                                Wormed
+
+                                <div class="form-check-inline">
+                                    <input type="radio" class="form-check-input" id="tick" name="gendertype" value="tick">
+                                </div>
+                                Tick
+                            </div><br>
+
+                            <div>
+                                <div class="form-check-inline">
+                                    <input type="radio" class="form-check-input" id="vaccinated" name="vaccinated" value="vaccinated">
+                                </div>
+                                Vaccinated
+
+                                <div class="form-check-inline">
+                                    <input type="radio" class="form-check-input" id="notvaccinated" name="vaccinated" value="notvaccinated">
+                                </div>
+                                Not Vaccinated
+                            </div><br>
+
+                            <div>
+                                <div class="form-check-inline">
+                                    <input type="radio" class="form-check-input" id="friendly" name="behaviour" value="friendly">
+                                </div>
+                                Friendly
+
+                                <div class="form-check-inline">
+                                    <input type="radio" class="form-check-input" id="nervous" name="behaviour" value="nervous">
+                                </div>
+                                Nervous
+
+                                <div class="form-check-inline">
+                                    <input type="radio" class="form-check-input" id="dangerous" name="behaviour" value="dangerous">
+                                </div>
+                                Dangerous
+                            </div><br><br>
+
+                              <div class="form-group">
+                                <select name="clientname" id="clientname" class="form-control">
+                                  <option value="{{client.id}}">{{client.firstname}}</option>
+                                    {% for i in allclient%}
+                                        <option value="{{client.id}}">{{i.firstname}}</option>
+                                    {% endfor %}
+                                </select>
+                              </div>
+
+                            <div class="form-group">
+                                <label>Vaccine Proof: </label>
+                                <input type="file" id="myFile1" name="myFile1">
+                            </div>
+
+                        </div>
+                  <button class="btn btn-success" style="width:100%;">Save Pet</button>
+
+        </div>
+    </form>
+
+
+
+
+    </div>
+</div>
+{% endblock %}
