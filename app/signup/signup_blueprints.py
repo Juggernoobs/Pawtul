@@ -35,7 +35,7 @@ def signup():
             return redirect(url_for("home_blueprints.dashboard"))
         flash("A user already exists with that email address.")
     return render_template(
-        "signup.html",
+        "/login/signup.html",
         title="Create an Account.",
         form=form,
         template="signup-page",

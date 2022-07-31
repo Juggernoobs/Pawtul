@@ -33,7 +33,7 @@ def login():
         flash("Invalid username/password combination")
         return redirect(url_for("login_blueprints.login"))
     return render_template(
-        "login.html",
+        "login/login.html",
         form=form,
         title="Log in.",
         template="login-page",

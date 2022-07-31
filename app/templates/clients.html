@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 <br>
-<link href="{{url_for('static', filename='css/client.css')}}" rel="stylesheet" />
 <link href="{{url_for('static', filename='css/search.css')}}" rel="stylesheet" />
 <script src="{{url_for('static', filename='js/client_card.js')}}"></script>
 
@@ -31,7 +30,6 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <div class="articles card" id="mini_client_card" style="display:block">
         <div class="card-close">
         </div>
         <div class="card-body no-padding">
@@ -43,7 +41,8 @@
                 <small>{{i.address1}} {{i.address2}} {{i.address3}} {{i.address4}}
                   {{i.postcode}}</small>
                 <br>
-                <a class="btn btn-outline-primary" onclick="show_client()" style="width:10rem;height:2.5rem;">View
+                <a class="btn btn-outline-primary" onclick="show_client('mini_client_card_{{ i.id
+                  }}', 'full_client_card_{{ i.id }}' )" style="width:6rem;height:2.5rem;">View
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                   </svg>
@@ -53,7 +52,8 @@
         </div>
       </div>
     </div>
-    <div class="container" id="full_client_card" style="display:none">
+    <div class="container" id="full_client_card_{{ i.id }}" style="display:none">
+      <br><br>
       <div class="main-body">
         <div class="row gutters-sm">
           <div class="col-md-4 mb-3">
@@ -74,8 +74,8 @@
                       <button class="btn btn-outline-primary" style="width:6rem;height:2.5rem">Pets</button>
                     </a>
                     <a>
-                      <button class=" btn btn-outline-primary" style="width:6rem;height:2.5rem"
-                        onclick="hide_client()">Close</button>
+                      <button class=" btn btn-outline-primary" style="width:6rem;height:2.5rem" onclick="hide_client('mini_client_card_{{ i.id
+                      }}',  'full_client_card_{{ i.id }}')">Close</button>
                     </a>
                   </div>
                 </div>
@@ -159,11 +159,10 @@
 
           </div>
         </div>
-
       </div>
     </div>
     <!-- <div class="card">
-          <div class="card-body">
+          <div class="card-body"> 
               <div class="row">
                   <div class="col-md-8">
                       {{i.firstname}} {{i.lastname}}
