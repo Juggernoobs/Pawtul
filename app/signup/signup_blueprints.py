@@ -1,11 +1,11 @@
 """Routes for user authentication."""
 from datetime import datetime
-
+from uuid import uuid4
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_user
 
 from app import login_manager
-from app.signup.signup_form import SignupForm
+from app.signup.signup_form import SignUpForm
 from app.signup.signup_models import User, db
 
 # Blueprint Configuration
@@ -21,12 +21,12 @@ def signup():
     GET requests serve sign-up page.
     POST requests validate form & user creation.
     """
-    form = SignupForm()
+    form = SignUpForm()
     if form.validate_on_submit():
         existing_user = User.query.filter_by(email=form.email.data).first()
         if existing_user is None:
             user = User(
-                firstname=form.firstname.data, surname=form.surname.data, email=form.email.data, created_on=datetime.now(), last_login=datetime.now()
+                id=str(uuid4()),firstname=form.firstname.data, surname=form.surname.data, email=form.email.data, created_on=datetime.now(), last_login=datetime.now()
             )
             user.set_password(form.password.data)
             db.session.add(user)

@@ -1,12 +1,14 @@
 """Logged-in page routes."""
 import os
 import pathlib
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, session
 from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
 
 from app.home.home_models import Client, Pet, Vet, Contact
+from app.signup.signup_models import User
 from app import db
+from uuid import uuid4
 
 # Blueprint Configuration
 home_blueprints = Blueprint(
@@ -29,6 +31,7 @@ def dashboard():
         current_user=current_user,
         body="You are now logged in!",
     )
+    
 
 
 @home_blueprints.route("/clients", methods=["POST", "GET"])
@@ -83,11 +86,19 @@ def addclient():
         address4 = request.form.get('address4')
         phonenumber = request.form.get('phonenumber')
         postcode = request.form.get('postcode')
-
-        record = Client(uuid=UUID, firstname=firstname, lastname=lastname, email=email,
-                        phone=phonenumber, address1=address1,
-                        address2=address2, address3=address3, address4=address4,
-                        postcode=postcode)
+        account_id=session['_user_id']
+        record = Client(
+            id=str(uuid4()), 
+            account_id=account_id,
+            firstname=firstname,
+            lastname=lastname,
+            email=email,
+            phone=phonenumber,
+            address1=address1,
+            address2=address2,
+            address3=address3,
+            address4=address4,
+            postcode=postcode)
         db.session.add(record)
         db.session.commit()
         return redirect('/clients')

@@ -8,7 +8,7 @@ class Client(db.Model):
     """User account model."""
     __tablename__ = "clients"
     id = db.Column(db.Integer, primary_key=True)
-    uuid = db.Column(db.String(100), nullable=False, unique=False)
+    account_id = db.Column(db.String(100), nullable=False, unique=False)
     firstname = db.Column(db.String(100), nullable=False, unique=False)
     lastname = db.Column(db.String(100), nullable=False, unique=False)
     email = db.Column(db.String(100), nullable=False, unique=False)
@@ -19,12 +19,11 @@ class Client(db.Model):
     address4 = db.Column(db.String(100), nullable=False, unique=False)
     postcode = db.Column(db.String(100), nullable=False, unique=False)
 
-    def __init__(self, uuid, firstname, lastname, email, phone, address1, address2, address3, address4,
+    def __init__(self, id, account_id, firstname, lastname, email, phone, address1, address2, address3, address4,
                  postcode
                  ):
-        self.uuid = uuid
-        if self.uuid == "":
-            self.uuid = str(uuid4())
+        self.id = id
+        self.account_id = account_id
         self.firstname = firstname
         self.lastname = lastname
         self.email = email
