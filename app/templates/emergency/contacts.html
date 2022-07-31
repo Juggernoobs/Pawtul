@@ -1,0 +1,87 @@
+{% extends "navbar/navbar.html" %}
+{% block content %}
+
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <h3>New Contact</h3>
+    </div>
+    <div class="col-md-3"></div>
+  </div><br>
+
+  <form action="/contact/{{client.id}}" method="post">
+    <div class="row">
+
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="emergencyfirstname" name="emergencyfirstname"
+            placeholder="Enter Emergency Contact First Name">
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="emergencysecondname" name="emergencysecondname"
+            placeholder="Enter Emergency Contact Second Name">
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="emergencyphone" name="emergencyphone"
+            placeholder="Enter Emergency Contact Phone">
+        </div>
+
+        <div class="form-group">
+          <input type="email" class="form-control" id="emergencyemail" name="emergencyemail"
+            placeholder="Enter Emergency Contact Email">
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="text" class="form-control" id="emergencyadd1" name="emergencyadd1"
+            placeholder="Enter Emergency Contact Address 1">
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="emergencyadd2" name="emergencyadd2"
+            placeholder="Enter Emergency Contact Address 2">
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="emergencyadd3" name="emergencyadd3"
+            placeholder="Enter Emergency Contact Address 3">
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="emergencyadd4" name="emergencyadd4"
+            placeholder="Enter Emergency Contact Address 4">
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="emergencypostcode" name="emergencypostcode"
+            placeholder="Enter Emergency Contact Postal Code">
+        </div>
+
+      </div>
+      <button class="btn btn-success" style="width:100%;">Save Emergency Contact Info</button>
+
+    </div>
+  </form>
+
+
+
+
+</div>
+</div>
+{% endblock %}
